@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Store;
+use JavaScript;
 
 class MenuController extends Controller
 {
@@ -14,6 +16,13 @@ class MenuController extends Controller
      */
     public function create(Request $req){
         if($req->method() == 'GET'){
+            $stores = Store::with('dishes')->get();
+
+            JavaScript::put([
+                'stores' => $stores
+            ]);
+            
+//            return view('menus.create')->with(compact('stores'));
             return view('menus.create');
         }
         
