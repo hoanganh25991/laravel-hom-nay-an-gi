@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ url('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -19,6 +19,9 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+
+    <!-- Scripts -->
+    <script src="{{ url('js/app.js') }}"></script>
 </head>
 <body>
     <div id="app">
@@ -78,10 +81,9 @@
             </div>
         </nav>
 
+
+
         @yield('content')
     </div>
-
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
 </body>
 </html>

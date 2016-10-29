@@ -21,3 +21,5 @@ Route::get('home', 'HomeController@index');
 Route::get('polymer', function(){
     return view('home-polymer');
 });
+
+//Route::get('menu/add')
