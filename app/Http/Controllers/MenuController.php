@@ -14,7 +14,7 @@ class MenuController extends Controller
      */
     public function create(Request $req){
         if($req->method() == 'GET'){
-            return view();
+            return view('menus.create');
         }
         
         if($req->method() == 'POST'){

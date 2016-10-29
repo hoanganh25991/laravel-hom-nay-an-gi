@@ -22,4 +22,4 @@ Route::get('polymer', function(){
     return view('home-polymer');
 });
 
-//Route::get('menu/add')
+Route::get('menu/create', 'MenuController@create');
