@@ -81,7 +81,7 @@
             </div>
         </nav>
 
-
+        @include('vendor.flash.message')
 
         @yield('content')
     </div>
