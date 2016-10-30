@@ -30,7 +30,7 @@
                                     class="panel panel-default"
                                 >
                                     <div class="panel-heading">
-                                        <h4>Món ăn</h4>
+                                        <span class="h4">Món ăn</span>
                                     </div>
 
                                     <div class="panel-body">
@@ -51,16 +51,16 @@
                             <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h4>Menu ngày @{{ menu.date }}
+                                        <span class="h4">Menu ngày </span>
+                                        <span class="pull-right">
+                                            @{{ menu.date }}
                                             <i class="fa fa-pencil-square-o"
                                                 @click="menuDateInput = !menuDateInput"
                                             ></i>
-                                        </h4>
-                                        <div class="row pull-right">
-                                            <span id="menuDateInput"></span>
+                                        </span>
+                                        <div class="row">
+                                            <span style="position: absolute; right: 15px" id="menuDateInput"></span>
                                         </div>
-                                        {{--<div v-show="menuDateInput" id="menuDateInput"></div>--}}
-                                        {{--<input type="text" v-show="menuDateInput" id="menuDateInput">--}}
                                     </div>
 
                                     <div id="menu"
