@@ -11,7 +11,6 @@ window.menuCreate = new Vue({
 	data: {
 		stores: stores,
 		selectedStore: {},
-		selectedDish: {},
 		menu: {
 			date: '',
 			dishes: []
@@ -52,13 +51,14 @@ window.menuCreate = new Vue({
 		updateMenuItem(element){
 			console.log(element);
 			console.log(element.dish);
+
 		}
 	},
 	watch:{
 		menuDateInput(newVal, oldVal){
 			console.log(newVal, oldVal);
 			let $menuDateInput = $('#menuDateInput');
-			
+
 			// if(newVal == true)
 				// $menuDateInput.data('kendoDatePicker').open();
 		}

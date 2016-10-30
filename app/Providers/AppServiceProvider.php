@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     {
         DB::listen(function ($query){
             $queryLog = fopen('query.log', 'a');
-            fwrite($queryLog, $query->sql);
+            fwrite($queryLog, $query->sql.PHP_EOL);
             fclose($queryLog);
         });
     }
