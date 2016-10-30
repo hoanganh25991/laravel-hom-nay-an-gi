@@ -56,7 +56,7 @@
                                              class="checkbox"
                                         >
                                             <label><input type="checkbox" value="@{{ index }}"
-                                                @click="updateMenuItem(this)">
+                                            >
                                                 @{{ dish.name }}|@{{ dish.price }}
                                             </label>
                                         </div>
@@ -80,7 +80,10 @@
                                     <div id="menu"
                                          class="panel-body"
                                     >
-                                        <div v-for="dish in menu">
+                                        <div v-for="dish in menu.dishes">
+                                        {{--<div v-for="dish in stores[selectedStoreIndex].dishes.filter(dish => dish.selected)">--}}
+                                        {{--<div v-for="dish in stores[selectedStoreIndex].dishes">--}}
+                                        {{--<div v-for="dish in menuDishes">--}}
                                             @{{ dish.name }}
                                         </div>
                                     </div>

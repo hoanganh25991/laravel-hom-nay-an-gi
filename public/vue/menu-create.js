@@ -14,9 +14,10 @@ window.menuCreate = new Vue({
 		selectedStoreIndex: undefined,
 		menu: {
 			date: '',
-			dishes: []
+			dishes: undefined
 		},
-		menuDateInput: false,
+		// menuDishes: undefined,
+		menuDateInput: false
 	},
 	created(){
 		console.log('fuck you');
@@ -29,6 +30,7 @@ window.menuCreate = new Vue({
 
 			// vue.selectedStore = vue.stores[storeIndex];
 			vue.selectedStoreIndex = storeIndex;
+			// vue.stores[storeIndex].dishes.forEach(dish => dish.selected = false);
 		});
 
 		let $menuDateInput = $('#menuDateInput');
@@ -44,25 +46,59 @@ window.menuCreate = new Vue({
 			vue.menu.date = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
 		}
 
-
+		let $dishList = $('#dishList');
+		$dishList.on('click', 'input[type="checkbox"]', function(){
+			console.log('checkbox clicked');
+			let dishIndex = $(this).val();
+			vue.updateMenuItem(dishIndex);
+		});
 	},
 	mounted(){
 
 	},
 	methods: {
-		updateMenuItem(element){
-			console.log(element);
-			console.log(element.dish);
+		updateMenuItem(dishIndex){
+			// console.log(element);
+			// console.log(element.dish);
 
+			// modify it into stores[selectedStoreIndex]
+			let vue = this;
+			let store = this.stores[this.selectedStoreIndex];
+			let dish = store.dishes[dishIndex];
+
+			if(dish.selected == undefined){
+				//if not set, set it, finish
+				// dish.selected = true;
+				Vue.set(dish, 'selected', true);
+			}else{
+				dish.selected = !dish.selected;
+			}
+
+			// this.menuDishes = this.stores[this.selectedStoreIndex];
+			this.menu.dishes = store.dishes.filter(dish => dish.selected);
+
+			console.log('updateMenuItem');
 		}
+	},
+	computed:{
+		// menuDishes: function(){
+		// 	let store = this.stores[this.selectedStoreIndex];
+		// 	console.log(store.dishes.filter(dish => dish.selected));
+		//
+		// 	return store.dishes.filter(dish => dish.selected);
+		// }
 	},
 	watch:{
 		menuDateInput(newVal, oldVal){
-			console.log(newVal, oldVal);
+			// console.log(newVal, oldVal);
 			let $menuDateInput = $('#menuDateInput');
 
-			// if(newVal == true)
-				// $menuDateInput.data('kendoDatePicker').open();
+			if(newVal == true)
+				console.log($menuDateInput.val());
+		},
+		stores(){
+			
 		}
+		
 	}
 });
