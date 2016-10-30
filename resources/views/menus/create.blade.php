@@ -28,11 +28,24 @@
                         {{--pick out disk to menu--}}
 
                         {{--confirm to save list of menu--}}
+                        <div>
+                            <h3>Menu</h3>
+                            <pre id="menuJson"></pre>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <style>
+        #menuJson{
+            max-height: 100px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            white-space: normal;
+        }
+    </style>
 
     <script src="{{ url('js/menu-create.js') }}"></script>
 @endsection

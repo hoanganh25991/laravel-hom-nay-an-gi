@@ -2,6 +2,7 @@
 let $selectStores = $('#selectStores');
 let $selectDishes = $('#selectDishes');
 let $dishList = $('#dishList');
+let $menuJson = $('#menuJson');
 
 //@var
 stores.forEach((store, index) => {
@@ -28,21 +29,46 @@ $selectStores.on('change', ()=>{
 		$selectDishes.append($option);
 	});
 });
+//store in global
+let dishes;
 
 $selectStores.on('change', ()=>{
 	let storeIndex = $selectStores.val();
 	console.log('selectedStore', storeIndex);
 
-	let dishes = stores[storeIndex].dishes;
+	dishes = stores[storeIndex].dishes;
 	//remove previous lis
 	$dishList.find('div.checkbox').empty();
 	//load new one
-	dishes.forEach(dish => {
+	dishes.forEach((dish, index) => {
 		let $checkboxDiv = $(`
 <div class="checkbox">
-  <label><input type="checkbox" value="${dish.id}">${dish.name}</label>
+  <label><input type="checkbox" value="${index}">${dish.name}</label>
 </div>
 `);
 		$dishList.append($checkboxDiv);
 	});
 });
+
+let menu = [];
+
+$dishList.on('click', 'input[type="checkbox"]', function(){
+	let $checkbox = $(this);
+	let isChecked = $checkbox.is(':checked');
+
+	let dish = dishes[$checkbox.val()];
+	console.log(dish);
+
+	if(isChecked){
+		menu.push(dish);
+	}else{
+		menu.splice($checkbox.val(), 1);
+	}
+
+	//event HELL
+	// after modify on menu
+	//show them back in other thing
+	$menuJson.text(JSON.stringify(menu));
+	$menuJson.scrollTop(10000);
+});
+
