@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-    //
+    protected $guarded = ['id'];
+    
+    public function dishes(){
+        return $this->belongsToMany(Dish::class);
+    }
 }

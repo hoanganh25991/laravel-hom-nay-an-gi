@@ -43,6 +43,23 @@ window.menuCreate = new Vue({
 			//have to follow yyyy-mm-dd format for input[type=date
 			vue.menu.date = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
 		}
+		
+		let btnSaveMenu = $('#btnSaveMenu');
+		btnSaveMenu.on('click', function(){
+			console.log('save menu');
+			$.post({
+				url: window.location.href,
+				data: {
+					menu: vue.menu
+				},
+				success(res){
+					console.log(res);
+				},
+				error(res){
+					console.log(res);
+				}
+			});
+		});
 	},
 	methods: {
 		updateMenuItem(dishIndex){

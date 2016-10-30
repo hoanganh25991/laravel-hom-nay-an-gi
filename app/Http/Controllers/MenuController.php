@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Store;
 use JavaScript;
+use App\Menu;
+use App\Dish;
 
 class MenuController extends Controller
 {
@@ -28,7 +30,18 @@ class MenuController extends Controller
         }
         
         if($req->method() == 'POST'){
-            
+            $menuInfo = $req->get('menu');
+
+            $menu = new Menu([
+                'date' => $menuInfo['date']
+            ]);
+            $menu->save();
+
+            $dishCollection = collect($menuInfo['dishes']);
+            $dishIds = $dishCollection->pluck('id');
+            $attachInfo = $menu->dishes()->attach($dishIds->toArray());
+
+            return $attachInfo;
         }
     }
 }

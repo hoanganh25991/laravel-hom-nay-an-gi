@@ -70,6 +70,18 @@
                                             @{{ dish.name }}|@{{ dish.price }}
                                         </div>
                                     </div>
+
+                                    <div class="panel-footer"
+                                         v-show="menu.dishes.length"
+                                    >
+                                        <div class="row ">
+                                            <div class="col-md-12">
+                                                <button id="btnSaveMenu" class="btn btn-default btn-sm pull-right">
+                                                    <i class="fa fa-floppy-o fa-2x " aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </span>
                             </div>
 

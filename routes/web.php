@@ -23,3 +23,4 @@ Route::get('polymer', function(){
 });
 
 Route::get('menu/create', 'MenuController@create');
+Route::post('menu/create', 'MenuController@create');
