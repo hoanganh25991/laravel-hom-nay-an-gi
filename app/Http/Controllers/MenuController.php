@@ -23,7 +23,8 @@ class MenuController extends Controller
             ]);
             
 //            return view('menus.create')->with(compact('stores'));
-            return view('menus.create');
+//            return view('menus.create');
+            return view('menus.create-02');
         }
         
         if($req->method() == 'POST'){
