@@ -4,7 +4,6 @@ window.menuCreate = new Vue({
 	data(){
 		return {
 			stores: stores,
-			selectedStore: {},
 			selectedStoreIndex: undefined,
 			menu: {
 				date: '',
@@ -58,7 +57,7 @@ window.menuCreate = new Vue({
 				dish.selected = !dish.selected;
 			}
 			//update through menu.dishes to review
-			this.menu.dishes = store.dishes.filter(dish => dish.selected);
+			// this.menu.dishes = store.dishes.filter(dish => dish.selected);
 			console.log('updateMenuItem');
 		}
 	},
@@ -68,6 +67,17 @@ window.menuCreate = new Vue({
 				// let $menuDateInput = $('#menuDateInput').datepicker('show');
 				$('#menuDateInput').datepicker('show');
 			}
+		},
+		stores:{
+			handler() {
+				let store = this.stores[this.selectedStoreIndex];
+				this.menu.dishes = store.dishes.filter(dish => dish.selected);
+			},
+			deep: true
+		},
+		selectedStoreIndex(){
+			let store = this.stores[this.selectedStoreIndex];
+			this.menu.dishes = store.dishes.filter(dish => dish.selected);
 		}
 	}
 });
