@@ -24,9 +24,18 @@ window.menuCreate = new Vue({
 		});
 
 		let $menuDateInput = $('#menuDateInput');
-		$menuDateInput.on('change', function(){
+		let options = {
+			weekStart: 1,
+			keyboardNavigation: false,
+			todayHighlight: true,
+			orientation: "bottom right"
+		};
+		$menuDateInput.datepicker(options).on('changeDate', function(){
 			vue.menuDateInput = false;
-			vue.menu.date = $menuDateInput.val();
+
+			let pickedDate = $menuDateInput.datepicker('getDate');
+			vue.menu.date =`${pickedDate.getFullYear()}-${pickedDate.getMonth()+1}-${pickedDate.getDate()}`;
+			$menuDateInput.datepicker('hide');
 		});
 
 		//set up default if menu.date not set
@@ -51,6 +60,14 @@ window.menuCreate = new Vue({
 			//update through menu.dishes to review
 			this.menu.dishes = store.dishes.filter(dish => dish.selected);
 			console.log('updateMenuItem');
+		}
+	},
+	watch:{
+		menuDateInput(newVal){
+			if(newVal == true){
+				// let $menuDateInput = $('#menuDateInput').datepicker('show');
+				$('#menuDateInput').datepicker('show');
+			}
 		}
 	}
 });
