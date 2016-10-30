@@ -38,7 +38,7 @@
                                              class="checkbox"
                                         >
                                             <label>
-                                                <input type="checkbox" value="@{{ index }}"
+                                                <input type="checkbox" value="@{{ index }}" v-bind:checked="dish.selected"
                                                         @click='updateMenuItem(this.index)'
                                                 >
                                                     @{{ dish.name }}|@{{ dish.price }}
