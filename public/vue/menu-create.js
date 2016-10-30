@@ -11,6 +11,7 @@ window.menuCreate = new Vue({
 	data: {
 		stores: stores,
 		selectedStore: {},
+		selectedStoreIndex: undefined,
 		menu: {
 			date: '',
 			dishes: []
@@ -24,9 +25,10 @@ window.menuCreate = new Vue({
 		let $selectStores = $('#selectStores');
 		$selectStores.on('change', function(){
 			let storeIndex = $selectStores.val();
-			console.log(storeIndex);
+			console.log('storeIndex', storeIndex);
 
-			vue.selectedStore = vue.stores[storeIndex];
+			// vue.selectedStore = vue.stores[storeIndex];
+			vue.selectedStoreIndex = storeIndex;
 		});
 
 		let $menuDateInput = $('#menuDateInput');

@@ -49,7 +49,10 @@
                                     </div>
 
                                     <div class="panel-body">
-                                        <div v-for="(index, dish) in selectedStore.dishes"
+                                        {{--<div v-for="(index, dish) in selectedStore.dishes"--}}
+                                             {{--class="checkbox"--}}
+                                        {{-->--}}
+                                        <div v-for="(index, dish) in stores[selectedStoreIndex].dishes"
                                              class="checkbox"
                                         >
                                             <label><input type="checkbox" value="@{{ index }}"
