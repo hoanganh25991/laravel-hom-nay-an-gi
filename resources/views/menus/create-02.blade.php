@@ -14,10 +14,6 @@
                     </div>
 
                     <div class="panel-body">
-                        {{--store list--}}
-                        {{--@foreach($stores as $store)--}}
-                        {{--<pre>{{$store->name}}</pre>--}}
-                        {{--@endforeach--}}
                         <select id="selectStores"
                         >
                             <option disabled selected value> -- select an option -- </option>
@@ -49,15 +45,14 @@
                                     </div>
 
                                     <div class="panel-body">
-                                        {{--<div v-for="(index, dish) in selectedStore.dishes"--}}
-                                             {{--class="checkbox"--}}
-                                        {{-->--}}
                                         <div v-for="(index, dish) in stores[selectedStoreIndex].dishes"
                                              class="checkbox"
                                         >
-                                            <label><input type="checkbox" value="@{{ index }}"
-                                            >
-                                                @{{ dish.name }}|@{{ dish.price }}
+                                            <label>
+                                                <input type="checkbox" value="@{{ index }}"
+                                                        @click='updateMenuItem(this.index)'
+                                                >
+                                                    @{{ dish.name }}|@{{ dish.price }}
                                             </label>
                                         </div>
                                     </div>
@@ -81,10 +76,7 @@
                                          class="panel-body"
                                     >
                                         <div v-for="dish in menu.dishes">
-                                        {{--<div v-for="dish in stores[selectedStoreIndex].dishes.filter(dish => dish.selected)">--}}
-                                        {{--<div v-for="dish in stores[selectedStoreIndex].dishes">--}}
-                                        {{--<div v-for="dish in menuDishes">--}}
-                                            @{{ dish.name }}
+                                            @{{ dish.name }}|@{{ dish.price }}
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +94,6 @@
     <script src="{{ url('vue/menu-create.js') }}"></script>
     <script>
         $(document).ready(function(){
-//            console.log($('#menuDateInput'));
         });
     </script>
 @endsection
