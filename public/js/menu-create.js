@@ -62,12 +62,17 @@ $dishList.on('click', 'input[type="checkbox"]', function(){
 	if(isChecked){
 		menu.push(dish);
 	}else{
+		//@warn: what make this is the REVERSE of the above???
 		menu.splice($checkbox.val(), 1);
-	}
+}
 
 	//event HELL
 	// after modify on menu
 	//show them back in other thing
+
+	//@warn: menu simple as stringify
+	//what if it build up BY MENU > all action come from 'click'
+	//need to be NESTED here
 	$menuJson.text(JSON.stringify(menu));
 	$menuJson.scrollTop(10000);
 });
