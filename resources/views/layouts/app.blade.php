@@ -17,6 +17,7 @@
 
     <!-- Scripts -->
     <script src="{{ url('js/app.js') }}"></script>
+    {{--<script src="{{ url('js/docs.min.js') }}"></script>--}}
 </head>
 <body>
     <div id="app">

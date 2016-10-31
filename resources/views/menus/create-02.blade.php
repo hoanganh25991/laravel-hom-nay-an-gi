@@ -29,7 +29,7 @@
                                 <div id="dishList"
                                     class="panel panel-default"
                                 >
-                                    <div class="zero-clipboard"><span class="btn-clipboard">Edit</span></div>
+                                    <div class="zero-clipboard"><span class="btn-default btn-clipboard">Edit</span></div>
 
                                     <div class="panel-heading">
                                         <span class="h4">Món ăn</span>
