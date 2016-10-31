@@ -29,6 +29,8 @@
                                 <div id="dishList"
                                     class="panel panel-default"
                                 >
+                                    <div class="zero-clipboard"><span class="btn-clipboard">Edit</span></div>
+
                                     <div class="panel-heading">
                                         <span class="h4">Món ăn</span>
                                     </div>
@@ -43,6 +45,17 @@
                                                 >
                                                     @{{ dish.name }}|@{{ dish.price }}
                                             </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-show="dishEditMode">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">T</span>
+                                            <textarea rows="2" name="dishNames"
+                                                      placeholder="Please, copy dish (name,price) col & paste here, without header"
+                                                      class="form-control">
+                                            </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -82,11 +95,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </span>
+                                </div>
                             </div>
-
                         </div>
 
+                        <div class="row">
+                            <div class="panel-body">
+
+                            </div>
+                        </div>
                         {{--confirm to save list of menu--}}
                     </div>
                 </div>
@@ -97,7 +114,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
 
-    <script src="{{ url('vue/menu-create.js') }}"></script>
+    <script src="{{ url('vue/menu-create-bak.js') }}"></script>
 
     <script>
 //        $('#menuDateInput').datepicker();
